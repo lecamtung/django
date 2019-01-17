@@ -1,0 +1,8 @@
+{%if q%}
+  <h1> {{q.question_text}} </h1>
+  <p> ket qua cua cuoc binh chon: </p>
+  {% for item in q.choice_set.all %}
+      <p>{{item.choice_text}} : {{item.votes}}</p>
+  {%endfor%}
+
+{% endif %}
