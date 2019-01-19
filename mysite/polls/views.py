@@ -17,12 +17,13 @@ def detail(request, question_id):
 
 def vote(request, question_id):
     q = Question.objects.get(pk=question_id)
-    data = request.POST['choice']
+
     try:
         data = request.POST['choice']
+        print(data)
         c = q.choice_set.get(pk=data)
     except:
-        HttpResponse("loi khong co choice")
+        return HttpResponse("there is no choice")
     c.votes = c.votes + 1
     c.save()
     return render(request, "polls/vote.html", {"q":q})

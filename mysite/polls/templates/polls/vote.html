@@ -1,8 +1,10 @@
+{% block content %}
+{% load static %}
 {%if q%}
   <h1> {{q.question_text}} </h1>
-  <p> ket qua cua cuoc binh chon: </p>
+  <p> Results Of The Poll: </p>
   {% for item in q.choice_set.all %}
       <p>{{item.choice_text}} : {{item.votes}}</p>
   {%endfor%}
-
+  <a href="{% url 'polls:detail' q.id %}">Previous</a>
 {% endif %}
